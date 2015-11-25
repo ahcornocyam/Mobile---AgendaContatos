@@ -5,7 +5,8 @@ $(function(){
     });
     
     $('.collapside').collapsible({
-        accordion : true
+        accordion : true,
+        expandable:  true
     });
 })
 
