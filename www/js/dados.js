@@ -15,14 +15,14 @@ new Vue({
 
     methods :{
         adicionar : function(){
-            var index = this.pesquisa( this.pessoa );
-            console.log( index );
-            if( this.pessoas.indexOf( index ) === -1 ){
+
+
+            if( this.pessoas.indexOf( this.pesquisa() ) === -1 ){
                 this.pessoas.push( { pessoa : this.pessoa } );
                 //um lembrete pra mim, passando os dados para o formato JSON
                 localStorage.todos = JSON.stringify( this.pessoas );
                 this.pessoa = null;
-            }else if( this.pessoas.indexOf ( index ) > -1 ){
+            }else if( this.pessoas.indexOf ( this.pesquisa() ) > -1 ){
                 localStorage.todos = JSON.stringify( this.pessoas );
                 this.pessoa = null;            
             }else{
@@ -48,11 +48,14 @@ new Vue({
 
             var resultado,
                 tamanho  = this.pessoas.length;
-
-            for( var i = 0; i < tamanho ; i++ ){
-                if ( this.pessoas[i] == this.pessoa ){
-                    resultado = i ;                   
-                }           
+            if( this.pessoa == null )   {
+                resultado = -1;
+            }else{
+                for( var i = 0; i < tamanho ; i++ ){
+                    if ( this.pessoas[i].equals( this.pessoa ) ){
+                        resultado = i ;                   
+                    }           
+                }
             }
             return resultado;
         }
