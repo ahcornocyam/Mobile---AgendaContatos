@@ -25,5 +25,9 @@ header, main, footer {
 footer{
     bottom: 0;
 }
-      
+
+li:active,li:hover{
+    border: 2px inset yellow;
+    filter: brightness(1);
+}
     

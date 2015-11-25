@@ -8,12 +8,12 @@
         <!--Import Google Icon Font-->
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
-        <link rel="stylesheet" href="frameworks/materialize/materialize.css">
+        <link rel="stylesheet" type="text/css" href="node_modules/materialize-css/dist/css/materialize.min.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <title>Agenda de Contatos</title>
     </head>
     <body class="grey darken-4 grey-text text-darken-2">
-        <div class="container">        
+        <div id="agenda" class="container">        
             <!-- Header -->
             <div class="row">
                 <header class="col s12 m12 l12 z-depth-4">
@@ -24,62 +24,64 @@
             <!-- main -->
             <div class="row">
                 <main class="col s12 m12 l12">
-                   <!-- Listando -->
+                    <!-- Listando -->
                     <div class="col s11 m11 l11">
-                       <ul class="collapsible popout" data-collapsidble="expandable">
-                           <li>
-                               <div class="collapsible-header grey darken-4 grey-text text-darken-2">
-                                   <i class="small material-icons prefix">contact_phone</i>
-                                   <span class="right-align">Name</span>
-                               </div>
-                               <div class="collapsible-body">
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet neque deserunt ut nulla eos doloremque quisquam possimus voluptatem, molestiae at incidunt ipsa, iure ea et minima repellat asperiores magni temporibus.</p>
-                               </div>
-                           </li>
-                           <li>
-                               <div class="collapsible-header grey darken-4 grey-text text-darken-2">
-                                   <i class="small material-icons prefix">contact_phone</i>
-                                   <span class="right-align">Name</span>
-                               </div>
-                               <div class="collapsible-body">
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet neque deserunt ut nulla eos doloremque quisquam possimus voluptatem, molestiae at incidunt ipsa, iure ea et minima repellat asperiores magni temporibus.</p>
-                               </div>
-                           </li>
-                           <li>
-                               <div class="collapsible-header grey darken-4 grey-text text-darken-2">
-                                   <i class="small material-icons prefix">contact_phone</i>
-                                   <span class="right-align">Name</span>
-                               </div>
-                               <div class="collapsible-body">
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet neque deserunt ut nulla eos doloremque quisquam possimus voluptatem, molestiae at incidunt ipsa, iure ea et minima repellat asperiores magni temporibus.</p>
-                               </div>
-                           </li>
-                       </ul>
+                        <ul class="collapsible popout" data-collapsidble="expandable">
+                            <li v-for="item in pessoas ">
+                                <div class="collapsible-header grey darken-4 grey-text text-darken-2">
+                                    <i class="small material-icons left">contact_phone</i>
+                                    <p class="left-align">{{ item.pessoa.nome }}</p>
+                                </div>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li>Cidade: {{ item.pessoa.cidade }} </li>
+                                        <li>Telefone: {{ item..pessoa.fone }}</li>
+                                        <li>Email:{{ item.pessoa.email }}</li>
+                                    <li>
+                                        <a v-on:click="remover( index )" class="btn-floating btn-smaller waves-effect waves-light right">
+                                            <i class="material-icons">edit</i>
+                                        </a>
+                                    </li>
+                                    </ul>
+                                    
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                     <!--  parte do para adicionar -->
                     <div class="col s1 m1 l1">
                         <ul id="slide-out" class="side-nav right grey darken-4 grey-text text-darken-2">
-                            <div class="input-field">
-                                <i class="material-icons prefix">account_circle</i>
-                                <input type="text" placeholder="Seu nome..." class="validade" required>
-                            </div>
-                            <div class="input-field">
-                                <i class="material-icons prefix">location_on</i>
-                                <input type="text" placeholder="Cidade">
-                            </div>
-                            <div class="input-field">
-                                <i class="material-icons prefix">email</i>
-                                <input type="email" placeholder="Email@email.com">
-                            </div>
-                            <div class="input-field">
-                                <i class="material-icons prefix">phone</i>
-                                <input type="tel" placeholder="número de telefone">
-                            </div>
-                            <div class="input-field">
-                                <button class="btn-large waves-effect waves-light grey darken-4">
-                                    <i class="material-icons">input</i>
-                                </button>
-                            </div>
+                            <li>
+                                <div class="input-field grey darken-4 grey-text text-darken-2">
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input v-model='pessoa.nome' type="text" placeholder="Seu nome...">
+                                </div>
+                            </li>
+                            <li>                                
+                                <div class="input-field grey darken-4 grey-text text-darken-2">
+                                    <i class="material-icons prefix">location_on</i>
+                                    <input v-model='pessoa.cidade' type="text" placeholder="Cidade">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="input-field grey darken-4 grey-text text-darken-2">
+                                    <i class="material-icons prefix">email</i>
+                                    <input v-model='pessoa.email' type="email" placeholder="Email@email.com">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="input-field grey darken-4 grey-text text-darken-2">
+                                    <i class="material-icons prefix">phone</i>
+                                    <input v-model='pessoa.fone' type="tel" placeholder="número de telefone">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="input-field grey darken-4 grey-text text-darken-2">
+                                    <button v-on:click="adicionar" class="btn-large waves-effect waves-light grey darken-4">
+                                        <i class="material-icons">input</i>
+                                    </button>
+                                </div>
+                            </li>
                         </ul>
                         <a href="#!" data-activates="slide-out" class="button-collapse btn-floating btn-large waves-effect waves-light grey darken-3">
                             <i class="material-icons">add</i>
@@ -97,18 +99,11 @@
 
         </div>
         <script type="text/javascript" src="cordova.js"></script>
-        <script src="frameworks/jquery/jquery.min.js"></script>
-        <script src="frameworks/materialize/materialize.js"></script>
+        <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
+        <script type="text/javascript" src="node_modules/vue/dist/vue.min.js"></script>
+        <script type="text/javascript" src="node_modules/vue-resource/dist/vue-resource.min.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/dados.js"></script>
     </body>
 </html>
-
-<!--
-lista de contato
-
-nome, cidade, telefone, email
-
-primeiro mostrar a lista
-ter um campo onde cadastra
-
--->

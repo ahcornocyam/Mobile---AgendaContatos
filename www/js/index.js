@@ -1,12 +1,11 @@
 $(function(){
     $("[data-activates=slide-out]").sideNav({
-        menuWidth   : 400,
-        edge        : 'right'
+        menuWidth   : 240,        
+        edge        : 'right',        
     });
     
     $('.collapside').collapsible({
-        accordion : true,
-        expandable:  true
+        accordion : true,        
     });
 })
 
