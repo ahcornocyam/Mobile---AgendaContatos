@@ -32,7 +32,7 @@
                                     <i class="small material-icons left">contact_phone</i>
                                     <span class="left-align">{{ item.pessoa.nome }}</span>
                                     <span class="right-align">
-                                               <a v-on:click="editar( index )" class="btn-floating btn-smaller waves-effect waves-light grey darken-4 grey-text text-darken-2 right">
+                                               <a v-on:click="editacao( item.pessoa )" class="btn-floating btn-smaller waves-effect waves-light grey darken-4 grey-text text-darken-2 right">
                                                 <i class="material-icons">edit</i>
                                             </a>
                                     </span>
@@ -45,8 +45,8 @@
                                 <div class="collapsible-body">
                                     <ul>
                                         <li>Cidade: {{ item.pessoa.cidade }} </li>
-                                        <li>Telefone: {{ item..pessoa.fone }}</li>
-                                        <li>Email:{{ item.pessoa.email }}</li>
+                                        <li>Telefone: {{ item.pessoa.fone }}</li>
+                                        <li>Email: {{ item.pessoa.email }}</li>
                                     </ul>
                                 </div>                                
                             </li>
@@ -55,28 +55,29 @@
                     <!--  parte do para adicionar -->
                     <div class="col s1 m1 l1">
                         <ul id="slide-out" class="side-nav right grey darken-4 grey-text text-darken-2">
+                           
                             <li class="grey darken-4 grey-text text-darken-2">
                                 <div class="input-field">
                                     <i class="material-icons prefix">account_circle</i>
-                                    <input v-model='pessoa.nome' type="text" placeholder="Seu nome...">
+                                    <input id="nome" v-model='pessoa.nome' type="text" placeholder="Seu nome..." required>
                                 </div>
                             </li>
                             <li  class="grey darken-4 grey-text text-darken-2">                                
                                 <div class="input-field grey darken-4 grey-text text-darken-2">
                                     <i class="material-icons prefix">location_on</i>
-                                    <input v-model='pessoa.cidade' type="text" placeholder="Cidade">
+                                    <input id="cidade" v-model='pessoa.cidade' type="text" placeholder="Cidade">
                                 </div>
                             </li>
                             <li  class="grey darken-4 grey-text text-darken-2">
                                 <div class="input-field grey darken-4 grey-text text-darken-2">
                                     <i class="material-icons prefix">email</i>
-                                    <input v-model='pessoa.email' type="email" placeholder="Email@email.com">
+                                    <input id="email" v-model='pessoa.email' type="email" placeholder="Email@email.com">
                                 </div>
                             </li>
                             <li>
                                 <div class="input-field grey darken-4 grey-text text-darken-2">
                                     <i class="material-icons prefix">phone</i>
-                                    <input v-model='pessoa.fone' type="tel" placeholder="número de telefone">
+                                    <input id="fone" v-model='pessoa.fone' type="tel" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" placeholder="número de telefone" maxlength="15">
                                 </div>
                             </li>
                             <li  class="grey darken-4 grey-text text-darken-2">
@@ -104,6 +105,7 @@
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="node_modules/jquery-mask-plugin/src/jquery.mask.js"></script>
         <script type="text/javascript" src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
         <script type="text/javascript" src="node_modules/vue/dist/vue.min.js"></script>
         <script type="text/javascript" src="node_modules/vue-resource/dist/vue-resource.min.js"></script>

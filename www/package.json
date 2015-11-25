@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "jquery": "^2.1.4",
+    "jquery-mask-plugin": "^1.13.4",
     "materialize-css": "^0.97.3",
     "vue": "^1.0.10",
     "vue-resource": "^0.1.17"
