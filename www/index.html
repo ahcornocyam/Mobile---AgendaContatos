@@ -30,40 +30,44 @@
                             <li v-for="item in pessoas ">
                                 <div class="collapsible-header grey darken-4 grey-text text-darken-2">
                                     <i class="small material-icons left">contact_phone</i>
-                                    <p class="left-align">{{ item.pessoa.nome }}</p>
+                                    <span class="left-align">{{ item.pessoa.nome }}</span>
+                                    <span class="right-align">
+                                               <a v-on:click="editar( index )" class="btn-floating btn-smaller waves-effect waves-light grey darken-4 grey-text text-darken-2 right">
+                                                <i class="material-icons">edit</i>
+                                            </a>
+                                    </span>
+                                    <span class="right-align">
+                                               <a v-on:click="remover( index )" class="btn-floating btn-smaller waves-effect waves-light grey darken-4 grey-text text-darken-2 right">
+                                                <i class="material-icons">delete</i>
+                                            </a>
+                                    </span>
                                 </div>
                                 <div class="collapsible-body">
                                     <ul>
                                         <li>Cidade: {{ item.pessoa.cidade }} </li>
                                         <li>Telefone: {{ item..pessoa.fone }}</li>
                                         <li>Email:{{ item.pessoa.email }}</li>
-                                    <li>
-                                        <a v-on:click="remover( index )" class="btn-floating btn-smaller waves-effect waves-light right">
-                                            <i class="material-icons">edit</i>
-                                        </a>
-                                    </li>
                                     </ul>
-                                    
-                                </div>
+                                </div>                                
                             </li>
                         </ul>
                     </div>
                     <!--  parte do para adicionar -->
                     <div class="col s1 m1 l1">
                         <ul id="slide-out" class="side-nav right grey darken-4 grey-text text-darken-2">
-                            <li>
-                                <div class="input-field grey darken-4 grey-text text-darken-2">
+                            <li class="grey darken-4 grey-text text-darken-2">
+                                <div class="input-field">
                                     <i class="material-icons prefix">account_circle</i>
                                     <input v-model='pessoa.nome' type="text" placeholder="Seu nome...">
                                 </div>
                             </li>
-                            <li>                                
+                            <li  class="grey darken-4 grey-text text-darken-2">                                
                                 <div class="input-field grey darken-4 grey-text text-darken-2">
                                     <i class="material-icons prefix">location_on</i>
                                     <input v-model='pessoa.cidade' type="text" placeholder="Cidade">
                                 </div>
                             </li>
-                            <li>
+                            <li  class="grey darken-4 grey-text text-darken-2">
                                 <div class="input-field grey darken-4 grey-text text-darken-2">
                                     <i class="material-icons prefix">email</i>
                                     <input v-model='pessoa.email' type="email" placeholder="Email@email.com">
@@ -75,7 +79,7 @@
                                     <input v-model='pessoa.fone' type="tel" placeholder="número de telefone">
                                 </div>
                             </li>
-                            <li>
+                            <li  class="grey darken-4 grey-text text-darken-2">
                                 <div class="input-field grey darken-4 grey-text text-darken-2">
                                     <button v-on:click="adicionar" class="btn-large waves-effect waves-light grey darken-4">
                                         <i class="material-icons">input</i>
