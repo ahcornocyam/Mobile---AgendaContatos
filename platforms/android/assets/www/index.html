@@ -1,35 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
     <head>
+       <meta charset="utf-8">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+        <link rel="stylesheet" href="bower_components/Materialize/dist/css/materialize.min.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <title>Agenda de Contatos</title>
     </head>
-    <body>
-        <div class="container">
-            <header>
-                <h1> Agenda de Contatos </h1>
-            </header>        
-            <main>
-                
-            </main>
-            <footer>
-                <h6> Desenvolvido por Alexandre Roch e Mauricio de Souza </h6>
-            </footer>
+    <body class="grey darken-4 grey-text text-darken-2">
+        <div class="container">        
+            <!-- Header -->
+            <div class="row">
+                <header class="col s12 m12 l12 z-depth-4">
+                    <h1 class="center-align">Agenda de Contatos</h1>                       
+                </header>                
+            </div>
+            <div class="divider"></div>
+            <!-- main -->
+            <div class="row">
+                <main class="col s12 m12 l12">
+                    <div class="col s11 m11 l11">
+                        <p class="flow-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel distinctio ipsa deleniti magni quae voluptas alias tempora explicabo ad obcaecati, dolore voluptate quisquam quo corrupti molestiae. Repellendus voluptatum, iste voluptas?</p>
+                    </div>
+                    <div class="col s1 m1 l1">
+                        <ul id="slide-out" class="side-nav fixed">
+                            <li>
+                                <input type="text" id="nome" placeholder="nome" required>                                      
+                            </li>
+                            <li>
+                                <input type="email" id="email" placeholder="email">      
+                            </li>
+                            <li>
+                                <button type="button" class="btn">Ok</button>
+                            </li>
+                        </ul>
+  <a href="#!" data-activates="slide-out" class="button-collapse waves-effect waves-circle waves-light btn-floating secondary-content">
+    <i class="material-icons">add</i>
+  </a>
+                    </div>
+                </main>
+            </div>
+            <div class="divider"></div>
+            <!-- Footer -->
+            <div class="row">
+                <footer class="col s12 m12 l12 z-depth-4">
+                    <h6 class="center-align"> Desenvolvido por Alexandre Roch e Mauricio de Souza</h6>
+                </footer>
+            </div>
+
         </div>
         <script type="text/javascript" src="cordova.js"></script>
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/Materialize/dist/js/materialize.min.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>
 </html>
 
 <!--
-    lista de contato
-    
-    nome, cidade, telefone, email
-    
-    primeiro mostrar a lista
-    ter um campo onde cadastra
-    
- -->
+lista de contato
+
+nome, cidade, telefone, email
+
+primeiro mostrar a lista
+ter um campo onde cadastra
+
+-->
