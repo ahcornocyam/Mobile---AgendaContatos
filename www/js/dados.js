@@ -1,33 +1,32 @@
 new Vue({
     el      : '#agenda',
     data    : {
-        pessoa      : {            
+        pessoa      : {
             nome    : null,
             cidade  : null,
             email   : null,
-            fone    : null
+            fone    :null
         },
         pessoas     : []        
     },
-    ready :function(){     
-        this.mostrar(); 
+    ready :function(){            
+        this.mostrar();        
     },
 
     methods :{
-        adicionar : function(){
-
-
-            if( this.pessoas.indexOf( this.pesquisa() ) === -1 ){
+        salvar : function(e){
+            e.preventDefault();
+            var index  = index = this.pesquisa( this.pessoa );            
+            if ( index === undefined ){
                 this.pessoas.push( { pessoa : this.pessoa } );
-                //um lembrete pra mim, passando os dados para o formato JSON
                 localStorage.todos = JSON.stringify( this.pessoas );
-                this.pessoa = null;
-            }else if( this.pessoas.indexOf ( this.pesquisa() ) > -1 ){
-                localStorage.todos = JSON.stringify( this.pessoas );
-                this.pessoa = null;            
-            }else{
-                alert( 'dados nulos' );                 
-            } 
+                this.pessoa = null;                  
+
+            }else if(index >= 0 ){                   
+                this.pessoas.splice( index , 1, { pessoa :this.pessoa } );
+                localStorage.todos = JSON.stringify( this.pessoas );                     
+                this.pessoa = null; 
+            }            
             $( '.button-collapse' ).sideNav( 'hide' );             
         } ,
         mostrar : function(){           
@@ -36,29 +35,23 @@ new Vue({
                 this.pessoas = JSON.parse( localStorage.todos );
             }
         },
-        remover : function( index ){
-            this.pessoas.splice( index, 1 );
+        remover : function( pessoa ){             
+            var index = this.pesquisa( pessoa );           
+            this.pessoas.splice( index , 1 );
             localStorage.todos = JSON.stringify( this.pessoas );
         },        
-        editacao : function( pessoa ){
+        editacao : function( pessoa ){ 
             $( '.button-collapse' ).sideNav( 'show' );
-            this.pessoa  =  pessoa;            
+            this.pessoa = pessoa;            
         },
-        pesquisa : function(){
-
-            var resultado,
-                tamanho  = this.pessoas.length;
-            if( this.pessoa == null )   {
-                resultado = -1;
-            }else{
-                for( var i = 0; i < tamanho ; i++ ){
-                    if ( this.pessoas[i].equals( this.pessoa ) ){
-                        resultado = i ;                   
-                    }           
-                }
+        pesquisa : function( pessoa ){
+            var resultado;
+            for ( var i = 0 ; i < this.pessoas.length; i++ ){                
+                if( this.pessoas[i].pessoa ===  pessoa ){                    
+                    resultado = i;
+                }            
             }
             return resultado;
-        }
+        }        
     }
-
 })
